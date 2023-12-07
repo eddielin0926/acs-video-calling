@@ -1,0 +1,6 @@
+[submodule "acs-token"]
+	path = acs-token
+	url = https://github.com/eddielin0926/acs-token.git
+[submodule "add-1-on-1-video-calling"]
+	path = add-1-on-1-video-calling
+	url = https://github.com/eddielin0926/add-1-on-1-video-calling.git

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  acs-token:
+    image: eddielin0926/acs-token
+    build:
+      context: acs-token
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    env_file: acs-token/.env
+  web:
+    image: eddielin0926/acs-web
+    build:
+      context: add-1-on-1-video-calling
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - API_URI=http://localhost:8000
+      - ROLE=web
+    command: "npx webpack serve --host 0.0.0.0 --port 8080 --config webpack.config.js"
+  seednoid:
+    image: eddielin0926/acs-web
+    build:
+      context: add-1-on-1-video-calling
+      dockerfile: Dockerfile
+    ports:
+      - 8088:8088
+    environment:
+      - API_URI=http://localhost:8000
+      - ROLE=seednoid
+    command: "npx webpack serve --host 0.0.0.0 --port 8088 --config webpack.config.js"
+  
